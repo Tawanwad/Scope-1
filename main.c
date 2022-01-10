@@ -1,66 +1,68 @@
-/*******************************************************************************/
 #include <stdio.h>
+#include <stdlib.h>
 
-void useLocal();
-void useStaticLocal();
-void useGlobal();
+int *a,i,j,n,k=0,t;
+int max,min;
 
-int x=1;  //global -->10
+void checking(void);
 
-int main()
+int main(int argc,char*argv[])
 {
-   printf("Global x in main is %d \n",x);
-   int x=5;// local in main
-   
-   printf("Local x in main is %d \n",x);
-  
-  
-   {  //block start new scope
-       int x=7;// hides both x in outer scope and global xor_eqconst_cast
-       printf("Local x in main's inner scope is %d \n",x);
-   }
+  a=(int*) malloc (sizeof(int)*n);
+  n=argc-1;
+  for(i=0; i<n; i++)
+  {
+    a[i]=atoi(argv[i+1]);
+  }
 
-  printf("Local x in main is %d \n",x);
-  printf("\n========================\n");
-  useLocal();
-  useLocal();
-        
-  printf("\n========================\n");
-  useStaticLocal();
-  useStaticLocal();
-  printf("\n========================\n");
-  useGlobal();
-  useGlobal();
-         
+  checking();
+  if(k!=0)
+  {
+    printf("The smallest prime is %d\n",min);
+    printf("The biggest prime is %d\n",max);
+  }
+  if(k==0)
+  {
+    printf("Do not have prime number\n");
+  }
+  
   return 0;
 }
 
-void useLocal(){
-    int x=25;
-    
-    printf("\nlocal x is %d on entering useLocal\n",x);
-    
-     ++x;   
-    printf("\nlocal x is %d on exiting useLocal\n",x);
+void checking(void)
+{
+  int check;
+  for(i=0; i<n; i++)
+  {
+    check=0;
+    for(j=1; j<=a[i]; j++)
+    {
+      if(a[i]!=0||a[i]!=1)
+      {
+        if(a[i]%j==0) 
+        {
+         check++;
+        }
+      }
+    }
+    if(check==2)
+    {
+      k++;
+      if(k==1) 
+      {
+          t=a[i];
+          min=t;
+          max=t;
+      }
+      if(t<a[i])
+      {
+        if(max<a[i]) max=a[i];
+      }
+      if(t>a[i])
+      {
+        if(min>a[i]) min=a[i];
+      }
+    }
+  }
 }
 
-
-void useStaticLocal(){
-   static int x=50;
-    
-    printf("\nlocal x is %d on entering useStaticLocal\n",x);
-    
-     ++x;   
-    printf("\nlocal x is %d on exiting useStaticLocal\n",x);
-
-}
-
-void useGlobal(){
-   
-    
-    printf("\nlocal x is %d on entering useGlobal\n",x);
-    
-    x*=10;   
-    printf("\nlocal x is %d on exiting useGlobal\n",x);
-
-}

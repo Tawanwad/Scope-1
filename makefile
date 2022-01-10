@@ -1,5 +1,5 @@
-compile: main1.c 
-	 gcc main1.c -o tawanwad
+compile: main.c 
+	 gcc main.c -o tawanwad
 
 run: tawanwad
 	 ./tawanwad
