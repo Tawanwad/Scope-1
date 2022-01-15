@@ -1,8 +1,8 @@
 compile: main.c 
-	 gcc main.c -o tawanwad
+	 gcc main.c -o tity
 
-run: tawanwad
-	 ./tawanwad
+run: tity
+	 ./tity
 
-clean: tawanwad
-	 rm tawanwad
+clean: tity
+	 rm tity
